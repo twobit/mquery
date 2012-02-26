@@ -28,9 +28,10 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 "(color)"
 ```
 
-#### query()
+#### query(query [, features])
+#### query(features)
 
-See mQuery().
+Allows for multiple media queries to be combined. See mQuery() for usage.
 
 #### media()
 
