@@ -30,8 +30,14 @@ test('media query', function() {
     equal(mQuery('print').query('screen').query('tv').media(), 'print,screen,tv', 'multiple simple media queries');
 });
 
-test('match', function() {
-    equal(mQuery('all').match(), true, 'simple match');
-    equal(mQuery('print').match(), false, 'failed match');
-    equal(mQuery('all)').match(), null, 'invalid match');
+test('matches', function() {
+    equal(mQuery('all').matches(), true, 'simple match');
+    equal(mQuery('print').matches(), false, 'failed match');
+    equal(mQuery('all)').matches(), false, 'invalid match');
+    ok(mQuery('all)').error(), 'invalid match error');
+});
+
+// query after match, invalid state
+
+test('bind/unbind', function() {
 });

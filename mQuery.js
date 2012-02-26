@@ -4,57 +4,101 @@
  */
 (function() {
     var mQuery = function(query, features) {
-        return new mQuery.Class(query, features);
-    };
+            return new mQuery.Class(query, features);
+        },
+        NOT_SUPPORTED = 1,
+        INVALID_QUERY = 2;
 
     mQuery.Class = function(query, features) {
+        this._error = 0;
         this._match = null;
-        this._media = this._query(query, features);
+        this._media = mQuery.Lib.query(query, features);
     };
 
     mQuery.Class.prototype = {
         query: function(query, features) {
-            this._media += ',' + this._query(query, features);
+            this._media += ',' + mQuery.Lib.query(query, features);
             return this;
+        },
+
+        bind: function(callback) {
+            if (!this._initMatch()) {
+                return this;
+            }
+            this._match.addListener(callback);  // FIXME: bind this to param
+            return this;
+        },
+
+        unbind: function(callback) {
+            if (!this._initMatch()) {
+                return this;
+            }
+            this._match.removeListener(callback);
+            return this;
+        },
+
+        matches: function() {
+            if (!this._initMatch()) {
+                return false;
+            }
+            return this._match.matches;
         },
 
         media: function() {
             return this._media;
         },
 
-        match: function(callback) {
-            if (window.matchMedia) {
-                this._match = window.matchMedia(this._media);
-            }
-            else if (window.msMatchMedia) {
-                this._match = window.msMatchMedia(this._media);
-            }
-            else {
-                console.error('matchMedia not supported');
-                return;
-            }
-            
-            if (typeof callback === 'function') {
-                this._match.addListener(callback);
-            }
+        error: function() {
+            this._initMatch();
+            return this._error;
+        },
 
-            // this._match.removeListener(callback)
-
-            if (this._match.media === "invalid") {
-                console.error('Invalid media query:' + this._media);
+        _initMatch: function() {
+            if (this._match) {
+                return this._match;
+            }
+            else if (this._error) {
                 return null;
             }
 
-            return this._match.matches;
+            var match = mQuery.Lib.match(this._media);
+
+            if (!match) {
+                this._error = NOT_SUPPORTED;
+                return null;
+            }
+
+            if (match.media === "invalid") {
+                this._error = INVALID_QUERY;
+                return null;
+            }
+
+            this._match = match;
+            return this._match;
+        }
+    };
+
+    mQuery.Lib = {
+        match: function(media) {
+            var match = null;
+
+            if (window.matchMedia) {
+                match = window.matchMedia(media);
+            }
+            else if (window.msMatchMedia) {
+                match = window.msMatchMedia(media);
+            }
+
+            return match;
         },
 
-        _query: function(query, features) {
+        query: function(query, features) {
             if (!query) {
                 return '';
             }
 
             if (typeof query === 'object') {
-                return this._features(query);
+                return mQuery.Lib.features(query);
             }
 
             var string = '';
@@ -64,26 +108,26 @@
             }
 
             if (typeof features === 'object') {
-                string += ' and ' +  this._features(features);
+                string += ' and ' +  mQuery.Lib.features(features);
             }
 
             return string;
         },
 
-        _features: function(features) {
+        features: function(features) {
             var ret = [];
 
             for (var feature in features) {
                 if (features.hasOwnProperty(feature)) {
-                    ret.push(this._feature(feature, features[feature]));
+                    ret.push(mQuery.Lib.feature(feature, features[feature]));
                 }
             }
 
             return ret.join(' and ');
         },
 
-        _feature: function(feature, value) {
-            feature = this._uncamel(feature);
+        feature: function(feature, value) {
+            feature = mQuery.Lib.uncamel(feature);
 
             if (typeof value === 'function') {
                 value = value(feature);
@@ -96,11 +140,11 @@
             return '(' + feature + (value ? ':' + value : '') + ')';
         },
 
-        _uncamel: function(string) {
-            return string.replace(/[A-Z]/g, this._uncamelSub);
+        uncamel: function(string) {
+            return string.replace(/[A-Z]/g, mQuery.Lib.uncamelSub);
         },
 
-        _uncamelSub: function(letter) {
+        uncamelSub: function(letter) {
             return '-' + letter.toLowerCase();
         }
     };
