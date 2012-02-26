@@ -4,7 +4,28 @@
 
 Scriptable media queries. Simple, lightweight, no dependencies.
 
+## Quick Examples
+
+```
+> mQuery("screen", {"min-width": "600px"}).media()
+"screen and (min-width:600px)"
+```
+
 ## Documentation
+
+### Operators
+<a href="#operators" />
+```
+only | not
+```
+
+---------------------------------------
+
+### Media Types
+<a href="#media_types" />
+```
+all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
+```
 
 ### mQuery()
 
@@ -14,7 +35,7 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 
 __Arguments__
 
- * query - 
+ * query - [Media type](#media_types) optionally preceded by an [operator](#operators).
  * features -
 
 __Example__
@@ -36,6 +57,8 @@ __Example__
 "(color)"
 ```
 
+---------------------------------------
+
 #### query(query [, features])
 #### query(features)
 
@@ -48,14 +71,34 @@ __Example__
 "print,screen,tv"
 ```
 
+---------------------------------------
+
 #### media()
 
-Output media query string.
+Returns the media query string.
+
+__Example__
+
+```
+> mQuery('print').media()
+"print"
+```
+
+---------------------------------------
 
 #### match()
 #### match(function())
 
-Evaluate the media query. Accepts a callback fired when media query dynamically updates.
+Execute the media query and return match success. Accepts an optional callback parameter. Browser will fire the callback when the media query match changes.
+
+__Example__
+
+```
+> mQuery('all').match()
+true
+```
+
+---------------------------------------
 
 ## Browser Support
 
