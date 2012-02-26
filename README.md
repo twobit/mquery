@@ -13,16 +13,16 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 
 ## Documentation
 
-### Operators
 <a name="operators" />
+### Operators
 ```
 only | not
 ```
 
 ---------------------------------------
 
-### Media Types
 <a name="media_types" />
+### Media Types
 ```
 all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
 ```
