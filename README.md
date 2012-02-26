@@ -45,7 +45,7 @@ window.matchMedia is available in:
  * Safari Mobile 5
  * Firefox Mobile (Gecko) 6.0
 
-[MDC window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia)
+[MDC window.matchMedia]: https://developer.mozilla.org/en/DOM/window.matchMedia
 
 ## Demos
 
