@@ -38,7 +38,7 @@ all | aural | braille | handheld | print | projection | screen | tty | tv | embo
 __Arguments__
 
  * query - [Media type](#media_types) optionally preceded by an [operator](#operators).
- * features -
+ * features - Object of feature/value pairs. Feature can be camelcase so quotes aren't necessary. Value may be a function(feature) returning a computed value.
 
 __Example__
 
@@ -57,6 +57,8 @@ __Example__
 "(min-width:600px)"
 > mQuery({"color": ""}).media()
 "(color)"
+> mQuery({maxWidth: function(feature) {return "600px";}}).media()
+"(max-width:600px)"
 ```
 
 ---------------------------------------
