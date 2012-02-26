@@ -40,4 +40,9 @@ test('matches', function() {
 // query after match, invalid state
 
 test('bind/unbind', function() {
+    //expect(1);
+
+    //mQuery('all').bind(function() {
+    //    equal(.matches(), true, 'simple match');
+    //});
 });

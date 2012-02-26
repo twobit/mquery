@@ -12,11 +12,15 @@
     mQuery.Class = function(query, features) {
         this._error = 0;
         this._match = null;
+        this._callback = null;
         this._media = mQuery.Lib.query(query, features);
     };
 
     mQuery.Class.prototype = {
         query: function(query, features) {
+            if (this._match) {  // Match has already occurred
+                return this;
+            }
             this._media += ',' + mQuery.Lib.query(query, features);
             return this;
         },
@@ -25,15 +29,16 @@
             if (!this._initMatch()) {
                 return this;
             }
-            this._match.addListener(callback);  // FIXME: bind this to param
+            this._callback = callback;
+            this._match.addListener(this._callback);  // FIXME: bind this to param
             return this;
         },
 
-        unbind: function(callback) {
+        unbind: function() {
             if (!this._initMatch()) {
                 return this;
             }
-            this._match.removeListener(callback);
+            this._match.removeListener(this._callback);
             return this;
         },
 
@@ -46,6 +51,11 @@
 
         media: function() {
             return this._media;
+        },
+
+        get: function() {
+            this._initMatch();
+            return this._match;
         },
 
         error: function() {
