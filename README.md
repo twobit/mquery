@@ -29,6 +29,8 @@ only | not
 all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
 ```
 
+---------------------------------------
+
 <a name="media_features" />
 ### Media Features
 ```
@@ -46,8 +48,6 @@ width | min-width | max-width
 ```
 
 In addition to these there are also vendor defined features i.g. [Mozilla](https://developer.mozilla.org/En/CSS/Media_queries#Mozilla-specific_media_features). mQuery does not prevent you from using these.
-
----------------------------------------
 
 ## Documentation
 
@@ -127,8 +127,6 @@ __Example__
 > mQuery('all').match()
 true
 ```
-
----------------------------------------
 
 ## Browser Support
 
