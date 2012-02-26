@@ -21,7 +21,7 @@
             if (this._match) {  // Match has already occurred
                 return this;
             }
-            this._media += ',' + mQuery.Lib.query(query, features);
+            this._media += ', ' + mQuery.Lib.query(query, features);
             return this;
         },
 
@@ -29,8 +29,8 @@
             if (!this._initMatch()) {
                 return this;
             }
-            this._callback = callback;
-            this._match.addListener(this._callback);  // FIXME: bind this to param
+            this._callback = mQuery.Lib.bind(this, callback);
+            this._match.addListener(this._callback);
             return this;
         },
 
@@ -89,6 +89,13 @@
     };
 
     mQuery.Lib = {
+        bind: function(scope, fn) {
+            var args = Array.prototype.slice.call(arguments, 2);
+            return function () {
+                return fn.apply(scope, args.concat(Array.prototype.slice.call(arguments)));
+            };
+        },
+
         match: function(media) {
             var match = null;
 
@@ -144,10 +151,10 @@
             }
 
             if (value === 0) {
-                return '(' + feature + ':0)';
+                return '(' + feature + ': 0)';
             }
 
-            return '(' + feature + (value ? ':' + value : '') + ')';
+            return '(' + feature + (value ? ': ' + value : '') + ')';
         },
 
         uncamel: function(string) {
