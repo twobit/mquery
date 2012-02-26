@@ -62,8 +62,8 @@ Not yet
 
 ## References
 
-[W3C Media Query Specification](http://www.w3.org/TR/css3-mediaqueries/)
-[MDN CSS Media Queries](https://developer.mozilla.org/En/CSS/Media_queries)
+  * [W3C Media Query Specification](http://www.w3.org/TR/css3-mediaqueries/)
+  * [MDN CSS Media Queries](https://developer.mozilla.org/En/CSS/Media_queries)
 
 #### BNF Grammar
 ```
