@@ -128,7 +128,7 @@ true
 
 ## Browser Support
 
-[window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia) is supported by current versions of Firefox, Chrome, Safari, iOS Safari, and Android Browser. IE10 will have support with for matchMedia as [window.msMatchMedia](http://msdn.microsoft.com/en-us/library/windows/apps/hh453838.aspx). mQuery will use either one if available.
+[window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia) is supported by current versions of Firefox, Chrome, Safari, iOS Safari, and Android Browser. IE10 has support for matchMedia as [window.msMatchMedia](http://msdn.microsoft.com/en-us/library/windows/apps/hh453838.aspx). mQuery will use either one if available.
 
 See also: [When can I use matchMedia?](http://caniuse.com/matchmedia)
 
