@@ -128,18 +128,9 @@ true
 
 ## Browser Support
 
-mQuery uses [window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia).
+[window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia) is supported by current versions of Firefox, Chrome, Safari, iOS Safari, and Android Browser. IE10 will have support with for matchMedia as [window.msMatchMedia](http://msdn.microsoft.com/en-us/library/windows/apps/hh453838.aspx). mQuery will use either one if available.
 
-window.matchMedia is available in:
-
-  * Chrome 9
-  * Firefox (Gecko) 6.0
-  * Internet Explorer 10 PP3
-  * Safari 5.1
-  * Safari Mobile 5
-  * Firefox Mobile (Gecko) 6.0
-
-
+See also: [When can I use matchMedia?](http://caniuse.com/matchmedia)
 
 ## Demos
 

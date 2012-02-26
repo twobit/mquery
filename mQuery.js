@@ -23,7 +23,16 @@
         },
 
         match: function(callback) {
-            this._match = matchMedia(this._media);
+            if (window.matchMedia) {
+                this._match = window.matchMedia(this._media);
+            }
+            else if (window.msMatchMedia) {
+                this._match = window.msMatchMedia(this._media);
+            }
+            else {
+                console.error('matchMedia not supported');
+                return;
+            }
             
             if (typeof callback === 'function') {
                 this._match.addListener(callback);
