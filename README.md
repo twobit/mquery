@@ -35,10 +35,9 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 
 ## Browser Support
 
-mQuery uses window.matchMedia.
+mQuery uses [window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia).
 
 window.matchMedia is available in:
-
   * Chrome 9
   * Firefox (Gecko) 6.0
   * Internet Explorer 10 PP3
@@ -46,7 +45,7 @@ window.matchMedia is available in:
   * Safari Mobile 5
   * Firefox Mobile (Gecko) 6.0
 
-[MDC window.matchMedia](https://developer.mozilla.org/en/DOM/window.matchMedia)
+
 
 ## Demos
 
