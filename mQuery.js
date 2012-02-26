@@ -64,9 +64,12 @@
                 this._match.addListener(callback);
             }
 
-            console.log(this);
+            if (this._match.media === "invalid") {
+                console.error('Invalid media query:' + this._media);
+                return null;
+            }
 
-            return true;
+            return this._match.matches;
         },
 
         _features: function(features) {

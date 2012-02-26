@@ -31,5 +31,6 @@ test('media query', function() {
 
 test('match', function() {
     equal(mQuery('all').match(), true, 'simple match');
-    equal(mQuery('all)').match(), false, 'invalid match');
+    equal(mQuery('print').match(), false, 'failed match');
+    equal(mQuery('all)').match(), null, 'invalid match');
 });
