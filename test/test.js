@@ -1,7 +1,7 @@
 test('invalid input', function() {
     equal(mQuery(null).media(), '', 'null');
     equal(mQuery(undefined).media(), '', 'undefined');
-    equal(mQuery(NaN).media(), '', 'undefined');
+    equal(mQuery(NaN).media(), '', 'NaN');
     equal(mQuery('').media(), '', 'empty string');
 });
 
