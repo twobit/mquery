@@ -12,19 +12,19 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 #### mQuery(features)
 
 ```
-> mQuery("screen")
+> mQuery("screen").media()
 "screen"
-> mQuery("not screen")
+> mQuery("not screen").media()
 "not screen"
-> mQuery("only screen")
+> mQuery("only screen").media()
 "only screen"
-> mQuery("screen", {maxWidth: "600px"})
+> mQuery("screen", {maxWidth: "600px"}).media()
 "screen and (max-width:600px)"
-> mQuery("screen", {"min-width": "600px"})
+> mQuery("screen", {"min-width": "600px"}).media()
 "screen and (min-width:600px)"
-> mQuery({"min-width": "600px"})
+> mQuery({"min-width": "600px"}).media()
 "(min-width:600px)"
-> mQuery({"color": ""})
+> mQuery({"color": ""}).media()
 "(color)"
 ```
 
