@@ -13,8 +13,6 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 
 ## Intro
 
-Media queries are a very effective tool to be able to dynamically change styling in response to a view change. [WIP]
-
 <a name="operators" />
 ### Operators
 ```
