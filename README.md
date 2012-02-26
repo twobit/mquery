@@ -30,8 +30,10 @@ all | aural | braille | handheld | print | projection | screen | tty | tv | embo
 ---------------------------------------
 
 <a href="#mQuery" />
-### mQuery(query [, features])
-### mQuery(features)
+### mQuery()
+
+ * mQuery(query [, features])
+ * mQuery(features)
 
 __Arguments__
 
@@ -59,8 +61,10 @@ __Example__
 
 ---------------------------------------
 
-### query(query [, features])
-### query(features)
+### query()
+
+ * query(query [, features])
+ * query(features)
 
 Allows for multiple media queries to be combined. See [mQuery()](#mQuery) for usage.
 
@@ -87,7 +91,9 @@ __Example__
 ---------------------------------------
 
 ### match()
-### match(function())
+
+ * match()
+ * match(function())
 
 Execute the media query and return match success. Accepts an optional callback parameter. Browser will fire the callback when the media query match changes.
 
