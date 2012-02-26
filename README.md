@@ -8,8 +8,16 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 
 ### mQuery()
 
+<a href="#mQuery" />
 #### mQuery(query [, features])
 #### mQuery(features)
+
+__Arguments__
+
+ * query - 
+ * features -
+
+__Example__
 
 ```
 > mQuery("screen").media()
@@ -31,7 +39,14 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 #### query(query [, features])
 #### query(features)
 
-Allows for multiple media queries to be combined. See mQuery() for usage.
+Allows for multiple media queries to be combined. See [mQuery()](#mQuery) for usage.
+
+__Example__
+
+```
+> mQuery('print').query('screen').query('tv').media()
+"print,screen,tv"
+```
 
 #### media()
 
