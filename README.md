@@ -32,7 +32,17 @@ all | aural | braille | handheld | print | projection | screen | tty | tv | embo
 <a name="media_features" />
 ### Media Features
 ```
-width | min-width | max-width | height | min-height | max-height | device-width | min-device-width | max-device-width | device-height | min-device-height | max-device-height | aspect-ratio | min-aspect-ratio | max-aspect-ratio | device-aspect-ratio | min-device-aspect-ratio | max-device-aspect-ratio | color | min-color | max-color | color-index | min-color-index | max-color-index | monochrome | min-monochrome | max-monochrome | resolution | min-resolution | max-resolution | scan | grid
+width | min-width | max-width
+  | height | min-height | max-height
+  | device-width | min-device-width | max-device-width
+  | device-height | min-device-height | max-device-height
+  | aspect-ratio | min-aspect-ratio | max-aspect-ratio
+  | device-aspect-ratio | min-device-aspect-ratio | max-device-aspect-ratio
+  | color | min-color | max-color
+  | color-index | min-color-index | max-color-index
+  | monochrome | min-monochrome | max-monochrome
+  | resolution | min-resolution | max-resolution
+  | scan | grid
 ```
 
 In addition to these there are also vendor defined features i.g. [Mozilla](https://developer.mozilla.org/En/CSS/Media_queries#Mozilla-specific_media_features). mQuery does not prevent you from using these.
