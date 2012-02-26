@@ -11,7 +11,9 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 "screen and (min-width:600px)"
 ```
 
-## Documentation
+## Intro
+
+Media queries are a very effective tool to be able to dynamically change styling in response to a view change. [WIP]
 
 <a name="operators" />
 ### Operators
@@ -27,7 +29,17 @@ only | not
 all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
 ```
 
+<a name="media_features" />
+### Media Features
+```
+width | min-width | max-width | height | min-height | max-height | device-width | min-device-width | max-device-width | device-height | min-device-height | max-device-height | aspect-ratio | min-aspect-ratio | max-aspect-ratio | device-aspect-ratio | min-device-aspect-ratio | max-device-aspect-ratio | color | min-color | max-color | color-index | min-color-index | max-color-index | monochrome | min-monochrome | max-monochrome | resolution | min-resolution | max-resolution | scan | grid
+```
+
+In addition to these there are also vendor defined features i.g. [Mozilla](https://developer.mozilla.org/En/CSS/Media_queries#Mozilla-specific_media_features). mQuery does not prevent you from using these.
+
 ---------------------------------------
+
+## Documentation
 
 <a name="mQuery" />
 ### mQuery()
@@ -38,7 +50,7 @@ all | aural | braille | handheld | print | projection | screen | tty | tv | embo
 __Arguments__
 
  * query - [Media type](#media_types) optionally preceded by an [operator](#operators).
- * features - Object of feature/value pairs. Feature can be camelcase so quotes aren't necessary. Value may be a function(feature) returning a computed value.
+ * features - Object of [media feature](#media_features)/value pairs. Feature can be camelcase so quotes aren't necessary. Value may be a function(feature) returning a computed value.
 
 __Example__
 
