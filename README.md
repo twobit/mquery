@@ -14,7 +14,7 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 ## Documentation
 
 ### Operators
-<a name="#operators" />
+<a name="operators" />
 ```
 only | not
 ```
@@ -22,14 +22,14 @@ only | not
 ---------------------------------------
 
 ### Media Types
-<a name="#media_types" />
+<a name="media_types" />
 ```
 all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
 ```
 
 ---------------------------------------
 
-<a name="#mQuery" />
+<a name="mQuery" />
 ### mQuery()
 
  * mQuery(query [, features])
