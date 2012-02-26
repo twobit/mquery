@@ -64,6 +64,8 @@
                 this._match.addListener(callback);
             }
 
+            // this._match.removeListener(callback)
+
             if (this._match.media === "invalid") {
                 console.error('Invalid media query:' + this._media);
                 return null;
