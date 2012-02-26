@@ -1,9 +1,6 @@
 /*
  * mQuery 0.1.0
- *
  * Copyright 2012 Stephen Murphy
- * Dual licensed under the MIT or GPL Version 2 licenses.
- *
  */
 (function() {
     var mQuery = function(query, features) {
