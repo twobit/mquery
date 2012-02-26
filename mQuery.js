@@ -78,7 +78,7 @@
                 return null;
             }
 
-            if (match.media === "invalid") {
+            if (match.media === 'invalid') {
                 this._error = INVALID_QUERY;
                 return null;
             }
