@@ -28,10 +28,18 @@ Scriptable media queries. Simple, lightweight, no dependencies.
 "(color)"
 ```
 
+#### query()
+
+See mQuery().
+
 #### media()
+
+Output media query string.
 
 #### match()
 #### match(function())
+
+Evaluate the media query. Accepts a callback fired when media query dynamically updates.
 
 ## Browser Support
 

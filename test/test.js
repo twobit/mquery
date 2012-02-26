@@ -27,6 +27,7 @@ test('features', function() {
 test('media query', function() {
     equal(mQuery('not all and (-moz-windows-compositor)').media(), 'not all and (-moz-windows-compositor)', 'only media query');
     equal(mQuery('not all and (-moz-windows-compositor)', {'min-width': '600px'}).media(), 'not all and (-moz-windows-compositor) and (min-width:600px)', 'append to media query');
+    equal(mQuery('print').query('screen').query('tv').media(), 'print,screen,tv', 'multiple simple media queries');
 });
 
 test('match', function() {

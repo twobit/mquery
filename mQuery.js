@@ -32,27 +32,16 @@
     };
 
     mQuery.Class = function(query, features) {
-        this._media = '';
         this._match = null;
-
-        if (!query) {
-            return;
-        }
-
-        if (typeof query === 'string') {
-            this._media += query;
-        }
-        else if (typeof query === 'object') {
-            this._media += this._features(query);
-            return;
-        }
-
-        if (typeof features === 'object') {
-            this._media += ' and ' +  this._features(features);
-        }
+        this._media = this._query(query, features);
     };
 
     mQuery.Class.prototype = {
+        query: function(query, features) {
+            this._media += ',' + this._query(query, features);
+            return this;
+        },
+
         media: function() {
             return this._media;
         },
@@ -72,6 +61,28 @@
             }
 
             return this._match.matches;
+        },
+
+        _query: function(query, features) {
+            if (!query) {
+                return '';
+            }
+
+            if (typeof query === 'object') {
+                return this._features(query);
+            }
+
+            var string = '';
+
+            if (typeof query === 'string') {
+                string += query;
+            }
+
+            if (typeof features === 'object') {
+                string += ' and ' +  this._features(features);
+            }
+
+            return string;
         },
 
         _features: function(features) {
