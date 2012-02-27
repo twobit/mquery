@@ -3,27 +3,12 @@
     <head>
         <title>mQuery Manual Test</title>
         <script type="text/javascript" src="../mQuery.js"></script>
-        <style type="text/css">
-        body {background: #FF0;}
-        @media screen and (min-width: 600px),tv,          print {
-            body {background: #000;}
-        }
-        </style>
     </head>
     <body>
         <script type="text/javascript">
-        mQuery('screen', {minWidth: '600px'}).bind(function() {
+        var mq = mQuery('screen', {minWidth: '600px'}).bind(function() {
             console.log(this.media());
         });
-
-        for (var i = 0; i < document.styleSheets.length; i++) {
-            for (var j = 0; j < document.styleSheets[i].cssRules.length; j++) {
-                if (document.styleSheets[i].cssRules[j].media) {
-                    console.log(document.styleSheets[i].cssRules[j]);
-                    console.log(document.styleSheets[i].cssRules[j].media.mediaText);
-                }
-            }
-        }
         </script>
     </body>
 </html>
