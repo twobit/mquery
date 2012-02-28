@@ -14,7 +14,7 @@ Flexible arguments:
 > mQuery("screen", {"min-width": "600px"}).media()
 "screen and (min-width: 600px)"
 > mQuery("not screen and (min-width: 600px)").media()
-"screen and (min-width: 600px)"
+"not screen and (min-width: 600px)"
 > mQuery("not screen and (min-width: 600px)", {maxWidth: '800px'}).media()
 "screen and (min-width: 600px) and (max-width: 800px)"
 ```
