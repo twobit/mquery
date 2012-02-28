@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mQuery: Orientation</title>
+        <script type="text/javascript" src="../mQuery.js"></script>
+    </head>
+    <body>        
+        <script type="text/javascript">
+        mQuery('(orientation: portrait)').bind(function() {
+            console.log('Portrait orientation: ' + this.matches());
+        });
+
+        mQuery('(orientation: landscape)').bind(function() {
+            console.log('Landscape orientation: ' + this.matches());
+        });
+        </script>
+    </body>
+</html>
