@@ -2,16 +2,43 @@
 
 ## More Powerful Media Queries
 
-Scriptable media queries. Simple, lightweight, no dependencies.
+Scriptable media queries. Simple, lightweight, no dependencies. Abstracts media query browser inconsistencies so you can focus on building a great responsive website.
 
 ## Quick Examples
 
+Flexible arguments:
 ```
+> mQuery({minWidth: "600px"}).media()
+"(min-width: 600px)"
 > mQuery("screen", {"min-width": "600px"}).media()
-"screen and (min-width:600px)"
+"screen and (min-width: 600px)"
+> mQuery("not screen and (min-width: 600px)").media()
+"screen and (min-width: 600px)"
+> mQuery("not screen and (min-width: 600px)", {maxWidth: '800px'}).media()
+"screen and (min-width: 600px) and (max-width: 800px)"
 ```
 
-## Intro
+Chainable:
+```
+> mQuery("tv").query("screen").query("print").media()
+"tv, screen, print"
+```
+
+Evaluate media queries:
+```
+> mQuery({minWidth: "600px"}).matches()
+true
+```
+
+Bind callbacks to media query updates:
+```
+> mQuery({minWidth: "600px"}).bind(function() {console.log(this.media());})
+Object
+```
+
+## Media Query Reference
+
+See [W3C Media Query Specification](http://www.w3.org/TR/css3-mediaqueries/) for more documentation on media queries.
 
 <a name="operators" />
 ### Operators
@@ -70,15 +97,15 @@ __Example__
 > mQuery("only screen").media()
 "only screen"
 > mQuery("screen", {maxWidth: "600px"}).media()
-"screen and (max-width:600px)"
+"screen and (max-width: 600px)"
 > mQuery("screen", {"min-width": "600px"}).media()
-"screen and (min-width:600px)"
+"screen and (min-width: 600px)"
 > mQuery({"min-width": "600px"}).media()
-"(min-width:600px)"
+"(min-width: 600px)"
 > mQuery({"color": ""}).media()
 "(color)"
 > mQuery({maxWidth: function(feature) {return "600px";}}).media()
-"(max-width:600px)"
+"(max-width: 600px)"
 ```
 
 ---------------------------------------
@@ -88,13 +115,13 @@ __Example__
  * query(query [, features])
  * query(features)
 
-Allows for multiple media queries to be combined. See [mQuery()](#mQuery) for usage.
+Allows for multiple media queries to be chained. See [mQuery()](#mQuery) for usage.
 
 __Example__
 
 ```
 > mQuery('print').query('screen').query('tv').media()
-"print,screen,tv"
+"print, screen, tv"
 ```
 
 ---------------------------------------
@@ -112,19 +139,57 @@ __Example__
 
 ---------------------------------------
 
-### match()
+### matches()
 
- * match()
- * match(function())
+ * matches()
 
-Execute the media query and return match success. Accepts an optional callback parameter. Browser will fire the callback when the media query match changes.
+Execute the media query and return match success.
 
 __Example__
 
 ```
-> mQuery('all').match()
+> mQuery('all').matches()
 true
 ```
+
+---------------------------------------
+
+### bind()
+
+ * bind(callback())
+
+Execute the media query and bind a media query listener. Browser will fire the callback when the media query match updates.
+
+__Example__
+
+```
+> mQuery({minWidth: "600px"}).bind(function() {console.log(this.media());})
+Object
+```
+
+---------------------------------------
+
+### unbind()
+
+ * unbind()
+
+Remove the bound callback.
+
+---------------------------------------
+
+### get()
+
+ * get()
+
+Return the underlying MediaQueryList object.
+
+---------------------------------------
+
+### error()
+
+ * error()
+
+Execute the media query and return possible error condition. Useful for testing.
 
 ## Browser Support
 
