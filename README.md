@@ -145,8 +145,6 @@ __Example__
 
 ### matches()
 
- * matches()
-
 Execute the media query and return match success.
 
 __Example__
@@ -175,23 +173,17 @@ Object
 
 ### unbind()
 
- * unbind()
-
 Remove the bound callback.
 
 ---------------------------------------
 
 ### get()
 
- * get()
-
 Return the underlying [MediaQueryList](https://developer.mozilla.org/en/DOM/MediaQueryList) object.
 
 ---------------------------------------
 
 ### error()
-
- * error()
 
 Execute the media query and return possible error condition. Useful for testing.
 
