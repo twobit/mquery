@@ -19,18 +19,21 @@ Flexible arguments:
 ```
 
 Chainable:
+
 ```
 > mQuery("tv").query("screen").query("print").media()
 "tv, screen, print"
 ```
 
 Evaluate media queries:
+
 ```
 > mQuery({minWidth: "600px"}).matches()
 true
 ```
 
 Bind callbacks to media query updates:
+
 ```
 > mQuery({minWidth: "600px"}).bind(function() {console.log(this.media());})
 Object
