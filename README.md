@@ -185,7 +185,7 @@ Remove the bound callback.
 
  * get()
 
-Return the underlying MediaQueryList object.
+Return the underlying [MediaQueryList](https://developer.mozilla.org/en/DOM/MediaQueryList) object.
 
 ---------------------------------------
 
