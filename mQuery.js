@@ -14,6 +14,7 @@
         this._match = null;
         this._callback = null;
         this._media = mQuery.Lib.query(query, features);
+        this._window = window;
     };
 
     mQuery.Class.prototype = {
@@ -71,14 +72,19 @@
                 return null;
             }
 
-            var match = mQuery.Lib.match(this._media);
+            var match = mQuery.Lib.match(this._media, this._window);
 
             if (!match) {
                 this._error = NOT_SUPPORTED;
                 return null;
             }
-
-            if (match.media === 'invalid') {
+            
+            if (match.media === 'invalid') {    // WebKit error
+                this._error = INVALID_QUERY;
+                return null;
+            }
+            else if (match.media === 'not all' &&
+                        match.media != this._media && !match.matches) {   // FireFox error
                 this._error = INVALID_QUERY;
                 return null;
             }
@@ -96,7 +102,7 @@
             };
         },
 
-        match: function(media) {
+        match: function(media, window) {
             var match = null;
 
             if (window.matchMedia) {
