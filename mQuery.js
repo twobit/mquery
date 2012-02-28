@@ -30,6 +30,13 @@
             if (!this._initMatch()) {
                 return this;
             }
+
+            // Fix open bug where callbacks aren't fired
+            // https://bugs.webkit.org/show_bug.cgi?id=75903
+            if (RegExp(" AppleWebKit/").test(navigator.userAgent)) {
+                this._fixWebkitCallback(this.media());
+            }
+
             this._callback = mQuery.Lib.bind(this, callback);
             this._match.addListener(this._callback);
             return this;
@@ -62,6 +69,16 @@
         error: function() {
             this._initMatch();
             return this._error;
+        },
+
+        _fixWebkitCallback: function(selector) {
+            var style = this._window.document.createElement('style');
+            this._window.document.getElementsByTagName('head')[0].appendChild(style);
+            if (!this._window.createPopup) { /* For Safari */
+               style.appendChild(this._window.document.createTextNode(''));
+            }
+            var s = this._window.document.styleSheets[document.styleSheets.length - 1];
+            s.insertRule('@media ' + selector + '{body{}}', s.cssRules.length);
         },
 
         _initMatch: function() {

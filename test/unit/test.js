@@ -38,16 +38,17 @@ test('matches', function() {
     ok(mQuery('all)').error(), 'invalid match error');
 });
 
-test('bind/unbind', function() {
-    expect(1);
+test('bind/unbind', 1, function() {
+    stop();
 
     var win = window.open();
     var mq = mQuery('screen', {maxWidth: '550px'});
     mq._window = win;
     mq.bind(function() {
         ok(this.matches(), 'bind');
+        start();
+        console.log('CLOSED');
         win.close();
     });
-
     win.resizeTo(500, 500);
 });
