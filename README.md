@@ -7,6 +7,7 @@ Scriptable media queries. Simple, lightweight, no dependencies. Abstracts media 
 ## Quick Examples
 
 Flexible arguments:
+
 ```
 > mQuery({minWidth: "600px"}).media()
 "(min-width: 600px)"
