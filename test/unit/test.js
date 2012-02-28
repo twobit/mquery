@@ -42,6 +42,11 @@ test('bind/unbind', 1, function() {
     stop();
 
     var win = window.open();
+
+    if (typeof win === 'undefined') {
+        console.log('enable window.open');
+    }
+
     var mq = mQuery('screen', {maxWidth: '550px'});
     mq._window = win;
     mq.bind(function() {
