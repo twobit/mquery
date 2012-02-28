@@ -36,7 +36,7 @@ true
 Bind callbacks to media query updates:
 
 ```
-> mQuery({minWidth: "600px"}).bind(function() {console.log(this.media());})
+> mQuery({minWidth: "600px"}).bind(function() {console.log(this.media());}) // prints "(min-width: 600px)"
 Object
 ```
 
