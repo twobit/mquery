@@ -1,8 +1,35 @@
-/*
- * mQuery 0.1.0
- * Copyright 2012 Stephen Murphy
- */
-(function() {
+(function(window) {
+    /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
+    /* Modified to check for msMatchMedia.*/
+    window.matchMedia = window.matchMedia || window.msMatchMedia || (function(doc, undefined){
+      
+      var bool,
+          docElem  = doc.documentElement,
+          refNode  = docElem.firstElementChild || docElem.firstChild,
+          // fakeBody required for <FF4 when executed in <head>
+          fakeBody = doc.createElement('body'),
+          div      = doc.createElement('div');
+      
+      div.id = 'mq-test-1';
+      div.style.cssText = "position:absolute;top:-100em";
+      fakeBody.appendChild(div);
+      
+      return function(q){
+        
+        div.innerHTML = '&shy;<style media="'+q+'"> #mq-test-1 { width: 42px; }</style>';
+        
+        docElem.insertBefore(fakeBody, refNode);
+        bool = div.offsetWidth == 42;
+        docElem.removeChild(fakeBody);
+        
+        return { matches: bool, media: q };
+      };
+    })(document);
+
+    /*
+     * mQuery 0.1.0
+     * Copyright 2012 Stephen Murphy
+     */
     var mQuery = function(query, features) {
             return new mQuery.Class(query, features);
         },
@@ -14,7 +41,6 @@
         this._match = null;
         this._callback = null;
         this._media = mQuery.Lib.query(query, features);
-        this._window = window;
     };
 
     mQuery.Class.prototype = {
@@ -72,12 +98,12 @@
         },
 
         _fixWebkitCallback: function(selector) {
-            var style = this._window.document.createElement('style');
-            this._window.document.getElementsByTagName('head')[0].appendChild(style);
-            if (!this._window.createPopup) { /* For Safari */
-               style.appendChild(this._window.document.createTextNode(''));
+            var style = window.document.createElement('style');
+            window.document.getElementsByTagName('head')[0].appendChild(style);
+            if (!window.createPopup) { /* For Safari */
+               style.appendChild(window.document.createTextNode(''));
             }
-            var s = this._window.document.styleSheets[document.styleSheets.length - 1];
+            var s = window.document.styleSheets[document.styleSheets.length - 1];
             s.insertRule('@media ' + selector + '{body{}}', s.cssRules.length);
         },
 
@@ -89,12 +115,7 @@
                 return null;
             }
 
-            var match = mQuery.Lib.match(this._media, this._window);
-
-            if (!match) {
-                this._error = NOT_SUPPORTED;
-                return null;
-            }
+            var match = window.matchMedia(this.media());
             
             if (match.media === 'invalid') {    // WebKit error
                 this._error = INVALID_QUERY;
@@ -117,19 +138,6 @@
             return function () {
                 return fn.apply(scope, args.concat(Array.prototype.slice.call(arguments)));
             };
-        },
-
-        match: function(media, window) {
-            var match = null;
-
-            if (window.matchMedia) {
-                match = window.matchMedia(media);
-            }
-            else if (window.msMatchMedia) {
-                match = window.msMatchMedia(media);
-            }
-
-            return match;
         },
 
         query: function(query, features) {
@@ -190,4 +198,4 @@
     };
 
     window.mQuery = mQuery;
-})();
+})(this);

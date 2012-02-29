@@ -38,6 +38,7 @@ test('matches', function() {
     ok(mQuery('all)').error(), 'invalid match error');
 });
 
+/*
 test('bind/unbind', 1, function() {
     stop();
 
@@ -57,3 +58,4 @@ test('bind/unbind', 1, function() {
     });
     win.resizeTo(500, 500);
 });
+*/
