@@ -1,0 +1,2 @@
+YUI.add('mquery', function (Y) {
+   
