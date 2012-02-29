@@ -33,8 +33,7 @@
     var mQuery = function(query, features) {
             return new mQuery.Class(query, features);
         },
-        NOT_SUPPORTED = 1,
-        INVALID_QUERY = 2;
+        INVALID_QUERY = 1;
 
     mQuery.Class = function(query, features) {
         this._error = 0;
@@ -117,12 +116,13 @@
 
             var match = window.matchMedia(this.media());
             
-            if (match.media === 'invalid') {    // WebKit error
+            // Invalid queries should be "not all" according to spec
+            if (match.media === 'not all' &&
+                        match.media != this._media && !match.matches) {
                 this._error = INVALID_QUERY;
                 return null;
             }
-            else if (match.media === 'not all' &&
-                        match.media != this._media && !match.matches) {   // FireFox error
+            else if (match.media === 'invalid') {    // WebKit does something different
                 this._error = INVALID_QUERY;
                 return null;
             }
