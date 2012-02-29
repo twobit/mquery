@@ -4,6 +4,8 @@
 
 Scriptable media queries. Simple, lightweight, no dependencies. Abstracts media query browser inconsistencies so you can focus on building a great responsive website.
 
+Download: [mquery dev](https://raw.github.com/twobit/mquery/master/build/mquery.js)
+
 ## Quick Examples
 
 Flexible arguments:

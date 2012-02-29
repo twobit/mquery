@@ -12,5 +12,3 @@ mQuery({minWidth: '320px', maxWidth: '480px'}).bind(function() {
 
 function setLayout(w) {
 }
-
-console.log(mQuery({WebkitMinDevicePixelRatio: 0}).matches());
