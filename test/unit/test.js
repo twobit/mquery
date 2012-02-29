@@ -38,24 +38,21 @@ test('matches', function() {
     ok(mQuery('all)').error(), 'invalid match error');
 });
 
-/*
 test('bind/unbind', 1, function() {
     stop();
 
     var win = window.open();
 
     if (typeof win === 'undefined') {
-        console.log('enable window.open');
+        console.log('Disable popup blocker');
     }
 
-    var mq = mQuery('screen', {maxWidth: '550px'});
-    mq._window = win;
+    mQueryWindow(win);
+    var mq = win.mQuery('screen', {maxWidth: '550px'});
     mq.bind(function() {
         ok(this.matches(), 'bind');
         start();
-        console.log('CLOSED');
         win.close();
     });
     win.resizeTo(500, 500);
 });
-*/
