@@ -1,4 +1,4 @@
-(function(window) {
+var mQueryWindow = function(window) {
 /*
  * mQuery 0.1.0
  * Copyright 2012 Stephen Murphy
@@ -203,4 +203,4 @@ window.matchMedia = window.matchMedia || window.msMatchMedia || (function(doc, u
 })(document);
 
     window.mQuery = mQuery;
-})(this);
+};
