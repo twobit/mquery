@@ -31,9 +31,9 @@
                 return this;
             }
 
-            // Fix open bug where callbacks aren't fired
+            // Fix open WebKit bug where callbacks aren't fired
             // https://bugs.webkit.org/show_bug.cgi?id=75903
-            if (RegExp(" AppleWebKit/").test(navigator.userAgent)) {
+            if (mQuery({WebkitMinDevicePixelRatio: 0}).matches()) {
                 this._fixWebkitCallback(this.media());
             }
 
