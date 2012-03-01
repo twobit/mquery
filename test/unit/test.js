@@ -44,7 +44,9 @@ test('bind/unbind', 1, function() {
     var win = window.open();
 
     if (typeof win === 'undefined') {
-        console.log('Disable popup blocker');
+        ok(win, 'Disable popup blocker and allow windows to be resized');
+        start();
+        return;
     }
 
     mQueryWindow(win);

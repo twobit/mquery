@@ -5,8 +5,16 @@
 var mQuery = function(query, features) {
         return new mQuery.Class(query, features);
     },
-    is_webkit = null,
-    INVALID_QUERY = 1;
+    INVALID_QUERY = 1,
+    isWebKit = function() {
+        if (isWebKit.memo) {
+            return isWebKit.memo;
+        }
+
+        isWebKit.memo = mQuery({WebkitMinDevicePixelRatio: 0}).matches();
+
+        return isWebKit.memo;
+    };
 
 mQuery.Class = function(query, features) {
     this._error = 0;
@@ -31,10 +39,7 @@ mQuery.Class.prototype = {
 
         // Fix open WebKit bug where callbacks aren't fired
         // https://bugs.webkit.org/show_bug.cgi?id=75903
-        if (typeof is_webkit !== "boolean") {
-            is_webkit = mQuery({WebkitMinDevicePixelRatio: 0}).matches();
-        }
-        if (is_webkit) {
+        if (isWebKit()) {
             this._fixWebkitCallback(this.media());
         }
 
