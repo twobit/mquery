@@ -16,7 +16,6 @@ var mQuery = function(query, features) {
     };
 
 mQuery.Class = function(query, features) {
-    this._error = 0;
     this._match = null;
     this._callback = null;
     this._media = mQuery.Lib.query(query, features);
