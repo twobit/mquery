@@ -5,7 +5,6 @@
 var mQuery = function(query, features) {
         return new mQuery.Class(query, features);
     },
-    INVALID_QUERY = 1,
     isWebKit = function() {
         if (isWebKit.memo) {
             return isWebKit.memo;
@@ -33,9 +32,7 @@ mQuery.Class.prototype = {
     },
 
     bind: function(callback) {
-        if (!this._initMatch()) {
-            return this;
-        }
+        this.get();
 
         // Fix open WebKit bug where callbacks aren't fired
         // https://bugs.webkit.org/show_bug.cgi?id=75903
@@ -49,17 +46,13 @@ mQuery.Class.prototype = {
     },
 
     unbind: function() {
-        if (!this._initMatch()) {
-            return this;
-        }
+        this.get();
         this._match.removeListener(this._callback);
         return this;
     },
 
     matches: function() {
-        if (!this._initMatch()) {
-            return false;
-        }
+        this.get();
         return this._match.matches;
     },
 
@@ -67,14 +60,11 @@ mQuery.Class.prototype = {
         return this._media;
     },
 
-    get: function() {
-        this._initMatch();
-        return this._match;
-    },
-
     error: function() {
-        this._initMatch();
-        return this._error;
+        this.get();
+
+        // Invalid queries should be "not all" according to spec. WebKit returns "invalid"
+        return (this._match.media === 'not all' || this._match.media === 'invalid');
     },
 
     _fixWebkitCallback: function(selector) {
@@ -87,28 +77,13 @@ mQuery.Class.prototype = {
         s.insertRule('@media ' + selector + '{body{}}', s.cssRules.length);
     },
 
-    _initMatch: function() {
+    get: function() {
         if (this._match) {
             return this._match;
         }
-        else if (this._error) {
-            return null;
-        }
 
-        var match = window.matchMedia(this.media());
-        
-        // Invalid queries should be "not all" according to spec
-        if (match.media === 'not all' &&
-                    match.media != this._media && !match.matches) {
-            this._error = INVALID_QUERY;
-            return null;
-        }
-        else if (match.media === 'invalid') {    // WebKit does something different
-            this._error = INVALID_QUERY;
-            return null;
-        }
+        this._match = window.matchMedia(this.media());
 
-        this._match = match;
         return this._match;
     }
 };

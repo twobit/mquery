@@ -39,6 +39,8 @@ test('matches', function() {
 });
 
 test('bind/unbind', 1, function() {
+    // Add bind after invalid media query
+
     stop();
 
     var win = window.open();
