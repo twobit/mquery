@@ -11,4 +11,5 @@ mQuery({minWidth: '320px', maxWidth: '480px'}).bind(function() {
 });
 
 function setLayout(w) {
+    console.log(w);
 }
