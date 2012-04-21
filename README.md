@@ -43,44 +43,6 @@ Chainable:
 "tv, screen, print"
 ```
 
-## Media Query Reference
-
-See [W3C Media Query Specification](http://www.w3.org/TR/css3-mediaqueries/) for more documentation on media queries.
-
-<a name="operators" />
-### Operators
-```
-only | not
-```
-
----------------------------------------
-
-<a name="media_types" />
-### Media Types
-```
-all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
-```
-
----------------------------------------
-
-<a name="media_features" />
-### Media Features
-```
-width | min-width | max-width
-  | height | min-height | max-height
-  | device-width | min-device-width | max-device-width
-  | device-height | min-device-height | max-device-height
-  | aspect-ratio | min-aspect-ratio | max-aspect-ratio
-  | device-aspect-ratio | min-device-aspect-ratio | max-device-aspect-ratio
-  | color | min-color | max-color
-  | color-index | min-color-index | max-color-index
-  | monochrome | min-monochrome | max-monochrome
-  | resolution | min-resolution | max-resolution
-  | scan | grid
-```
-
-In addition to these there are also vendor defined features i.g. [Mozilla](https://developer.mozilla.org/En/CSS/Media_queries#Mozilla-specific_media_features). mQuery does not prevent you from using these.
-
 ## Documentation
 
 <a name="mQuery" />
@@ -196,16 +158,51 @@ Execute the media query and return possible error condition. Useful for testing.
 
 See also: [When can I use matchMedia?](http://caniuse.com/matchmedia)
 
+There is a [WebKit bug](https://bugs.webkit.org/show_bug.cgi?id=75903) which was only recently fixed. Older browsers will most likely still have issues with matchMedia callbacks not being fired.
+
 ## Demos
 
 Not yet
 
-## References
+## Media Query Reference
 
-  * [W3C Media Query Specification](http://www.w3.org/TR/css3-mediaqueries/)
-  * [MDN CSS Media Queries](https://developer.mozilla.org/En/CSS/Media_queries)
+See [W3C Media Query Specification](http://www.w3.org/TR/css3-mediaqueries/) and [MDN CSS Media Queries](https://developer.mozilla.org/En/CSS/Media_queries) for more documentation on media queries.
 
-#### BNF Grammar
+<a name="operators" />
+### Operators
+```
+only | not
+```
+
+---------------------------------------
+
+<a name="media_types" />
+### Media Types
+```
+all | aural | braille | handheld | print | projection | screen | tty | tv | embossed
+```
+
+---------------------------------------
+
+<a name="media_features" />
+### Media Features
+```
+width | min-width | max-width
+  | height | min-height | max-height
+  | device-width | min-device-width | max-device-width
+  | device-height | min-device-height | max-device-height
+  | aspect-ratio | min-aspect-ratio | max-aspect-ratio
+  | device-aspect-ratio | min-device-aspect-ratio | max-device-aspect-ratio
+  | color | min-color | max-color
+  | color-index | min-color-index | max-color-index
+  | monochrome | min-monochrome | max-monochrome
+  | resolution | min-resolution | max-resolution
+  | scan | grid
+```
+
+In addition to these there are also vendor defined features i.g. [Mozilla](https://developer.mozilla.org/En/CSS/Media_queries#Mozilla-specific_media_features). mQuery does not prevent you from using these.
+
+### BNF Grammar
 ```
 media_query_list: <media_query> [, <media_query> ]*
 media_query: [[only | not]? <media_type> [ and <expression> ]*]
