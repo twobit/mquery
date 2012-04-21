@@ -4,7 +4,7 @@
 
 Scriptable media queries. Simple, lightweight, no dependencies. Abstracts media query browser inconsistencies so you can focus on building a great responsive website.
 
-Download: [mquery dev](https://raw.github.com/twobit/mquery/master/build/mquery.js)
+[Download](https://raw.github.com/twobit/mquery/master/build/mquery.js)
 
 ## Quick Examples
 
@@ -159,10 +159,6 @@ Execute the media query and return possible error condition. Useful for testing.
 See also: [When can I use matchMedia?](http://caniuse.com/matchmedia)
 
 There is a [WebKit bug](https://bugs.webkit.org/show_bug.cgi?id=75903) which was only recently fixed. Older browsers will most likely still have issues with matchMedia callbacks not being fired.
-
-## Demos
-
-Not yet
 
 ## Media Query Reference
 
