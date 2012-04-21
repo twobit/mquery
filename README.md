@@ -8,6 +8,21 @@ Download: [mquery dev](https://raw.github.com/twobit/mquery/master/build/mquery.
 
 ## Quick Examples
 
+Evaluate media queries:
+
+```
+> mQuery({minWidth: "600px"}).matches()
+true
+```
+
+Bind callbacks to media query updates:
+
+```
+mQuery({minWidth: "600px"}).bind(function() {
+  console.log(this.media()); // prints "(min-width: 600px)"
+});
+```
+
 Flexible arguments:
 
 ```
@@ -26,20 +41,6 @@ Chainable:
 ```
 > mQuery("tv").query("screen").query("print").media()
 "tv, screen, print"
-```
-
-Evaluate media queries:
-
-```
-> mQuery({minWidth: "600px"}).matches()
-true
-```
-
-Bind callbacks to media query updates:
-
-```
-> mQuery({minWidth: "600px"}).bind(function() {console.log(this.media());}) // prints "(min-width: 600px)"
-Object
 ```
 
 ## Media Query Reference

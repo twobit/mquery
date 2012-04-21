@@ -119,6 +119,7 @@ mQuery.Lib = {
         return string;
     },
 
+    // http://dvcs.w3.org/hg/cssom/raw-file/tip/Overview.html#serialize-a-media-query-list
     features: function(features) {
         var ret = [];
 
@@ -152,10 +153,10 @@ mQuery.Lib = {
     uncamelSub: function(letter) {
         return '-' + letter.toLowerCase();
     }
-};/* Modified to check for msMatchMedia.*/
+};
 
+/* Modified to check for msMatchMedia.*/
 /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
-
 window.matchMedia = window.matchMedia || window.msMatchMedia || (function(doc, undefined){
   
   var bool,

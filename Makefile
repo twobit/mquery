@@ -1,8 +1,7 @@
-SRC_DIR = src
+SRC_DIR = .
 BUILD_DIR = build
 
-BASE_FILES = ${SRC_DIR}/core.js\
-	${SRC_DIR}/matchMedia.js\
+BASE_FILES = ${SRC_DIR}/mquery.js
 
 all: core core-test yui
 
