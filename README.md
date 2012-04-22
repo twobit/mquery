@@ -19,7 +19,7 @@ Bind callbacks to media query updates:
 
 ```
 mQuery({minWidth: "600px"}).bind(function() {
-  console.log(this.media()); // prints "(min-width: 600px)"
+  console.log('test'); // prints "test" when width > 600px
 });
 ```
 
